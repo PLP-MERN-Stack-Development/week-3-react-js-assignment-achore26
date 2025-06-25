@@ -20,16 +20,16 @@ const Button = ({
   className = '',
   ...rest 
 }) => {
-  // Base classes
-  const baseClasses = 'inline-flex items-center justify-center font-medium rounded focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors';
+  // Base classes with better focus handling and animations
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 transition-all duration-200 transform hover:scale-105 active:scale-95';
   
-  // Variant classes
+  // Variant classes with dark mode support and better hover effects
   const variantClasses = {
-    primary: 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500',
-    secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800 focus:ring-gray-500',
-    danger: 'bg-red-600 hover:bg-red-700 text-white focus:ring-red-500',
-    success: 'bg-green-600 hover:bg-green-700 text-white focus:ring-green-500',
-    warning: 'bg-yellow-500 hover:bg-yellow-600 text-white focus:ring-yellow-500',
+    primary: 'bg-blue-600 hover:bg-blue-700 hover:shadow-lg text-white focus:ring-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600 dark:hover:shadow-blue-500/25',
+    secondary: 'bg-gray-200 hover:bg-gray-300 hover:shadow-md text-gray-800 focus:ring-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 dark:text-white dark:hover:shadow-gray-500/25',
+    danger: 'bg-red-600 hover:bg-red-700 hover:shadow-lg text-white focus:ring-red-500 dark:bg-red-500 dark:hover:bg-red-600 dark:hover:shadow-red-500/25',
+    success: 'bg-green-600 hover:bg-green-700 hover:shadow-lg text-white focus:ring-green-500 dark:bg-green-500 dark:hover:bg-green-600 dark:hover:shadow-green-500/25',
+    warning: 'bg-yellow-500 hover:bg-yellow-600 hover:shadow-lg text-white focus:ring-yellow-500 dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:hover:shadow-yellow-500/25',
   };
   
   // Size classes
@@ -40,7 +40,7 @@ const Button = ({
   };
   
   // Disabled classes
-  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
+  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed hover:scale-100 hover:shadow-none' : 'cursor-pointer';
   
   // Combine all classes
   const buttonClasses = `${baseClasses} ${variantClasses[variant] || variantClasses.primary} ${sizeClasses[size] || sizeClasses.md} ${disabledClasses} ${className}`;
